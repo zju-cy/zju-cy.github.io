@@ -3,15 +3,81 @@ layout: post
 title: Vim Shortcuts
 category: 工具
 tags: vim
+typora-root-url: ../../../zju-cy.github.io
 excerpt: Vim操作
 ---
+
+网上的一篇 vim 新手教程，非常不错。
+
+[简明 VIM 练级攻略](https://coolshell.cn/articles/5426.html)
+
+```
+:help x		命令帮助
+:e file		打开另一个文件到 buffer
+:bn				切换 buffer
+:bp				切换 buffer
+.					重复上个命令
+N<command>	重复某个命令 N 次
+100ihello [esc]	插入 100 个 hello
+%				括号跳转
+* #			匹配光标当前所在的单词，移动光标到下一个匹配单词
+fx			移动到下一个 x 字符处
+3fx			移动到第 3 个 x 字符处
+tx			移动到下一个 x 的前一字符处
+dtx			删除直到遇到下一个 x 字符
+ytx			复制到下一个 x 字符处
+ctx			类似 dtx，只是会进入 insert
+```
+
+![Word moves example](/images/word_moves.jpg)
+
+![Line moves](/images/line_moves.jpg)
+
+##### `<action>a<object>` 或 `<action>i<object>`，这两个命令非常强大。
+
+-   action 可以是任何的命令，如 `d` (删除), `y` (拷贝), `v` (可以视模式选择)。
+-   object 可能是： `w` 一个单词， `W` 一个以空格为分隔的单词， `s` 一个句字， `p` 一个段落，也可以是一个特别的字符：`"`、 `'`、 `)`、 `}`、 `]。`
+
+假设你有一个字符串 `(map (+) ("foo"))`.而光标键在第一个 `o `的位置。
+
+>   -   `vi"` → 会选择 `foo`.
+>   -   `va"` → 会选择 `"foo"`.
+>   -   `vi)` → 会选择 `"foo"`.
+>   -   `va)` → 会选择`("foo")`.
+>   -   `v2i)` → 会选择 `map (+) ("foo")`
+>   -   `v2a)` → 会选择 `(map (+) ("foo"))`
+
+![Text objects selection](/images/textobjects.png)
+
+##### 宏录制
+
+-   `qa` 把你的操作记录在寄存器 `a。`
+-   于是 `@a` 会replay被录制的宏。
+-   `@@` 是一个快捷键用来replay最新录制的宏。
+
+>   **示例**
+>
+>   在一个只有一行且这一行只有“1”的文本中，键入如下命令：
+>
+>   -   qaYp<C-a>q
+>       -   `qa` 开始录制
+>       -   `Yp` 复制行
+>       -   `<C-a>` 增加1
+>       -   `q` 停止录制
+>   -   `@a` → 在1下面写下 2
+>   -   `@@` → 在2 正面写下3
+>   -   现在做 `100@@` 会创建新的100行，并把数据增加到 103.
+
+
+
+以下是自己之前的一些记录，学而时习之。
 
 #### 移动
 
 Normal 模式下
 
 ```shell
-gg			首行
+gg		    首行
 G			末行
 #G/gg		第 # 行
 H			屏幕最上方
@@ -155,8 +221,11 @@ Visual 模式下
 Normal 模式下
 
 ```shell
-:r filename			读文件内容到当前行
-:r !cmd				读 cmd 执行结果到当前行
+:r filename    读文件内容到当前行
+:r !cmd        读 cmd 执行结果到当前行
+:w file        另存为文件 file
+:m,n w file    m-n 行另存到文件 file 中
+:m,n w >> file m-n 行追加到文件 file 中
 ```
 
 
@@ -176,6 +245,9 @@ d			删除
 ~			切换大小写
 u			改为小写
 U			改为大写
+J			连接所有行
+< >		左右缩进
+=			自动缩进
 ```
 
 
