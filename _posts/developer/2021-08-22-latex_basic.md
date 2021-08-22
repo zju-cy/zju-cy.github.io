@@ -127,11 +127,8 @@ LaTex 提供的标准文档类有以下三种：
 标准文档类可指定选项：
 
 -   10pt, 11pt, 12pt：指定文档的基本字号。默认为 10pt。
-
 -   a4paper, letterpaper, ...：指定纸张大小，默认为美式信纸 letterpaper (8.5 × 11 英寸)。 可指定选项还包括 a5paper，b5paper，executivepaper 和 legalpaper。
-
--   twoside, oneside：指定单面/双面排版。双面排版时，奇偶页的页眉页脚、页边距不同。article 和 report 默认为 oneside，book 默认为 twoside。
-
+-   twoside, oneside：指定单面/双面排版。双面排版时，奇偶页的页眉页脚、页边距不同。article 和 report 默认为 oneside，book 默认为 twoside
 -   onecolumn, twocolumn：指定单栏/双栏排版。默认为 onecolumn。
 -   openright, openany：指定新的一章 `\chapter` 是在奇数页（右侧）开始，还是直接紧跟着上一页开始。report 默认为 openany，book 默认为 openright。对 article 无效。
 -   landscape：指定横向排版。默认为纵向。
