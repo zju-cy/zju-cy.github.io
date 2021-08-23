@@ -4,7 +4,7 @@ title: LaTex 符号
 category: 开发
 tags: latex
 excerpt: LaTex 中的字符。
-typora-root-url: ../../../zju-cy.github.io
+typora-root-url: ../..
 ---
 
 [toc]
